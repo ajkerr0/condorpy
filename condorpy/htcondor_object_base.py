@@ -195,7 +195,7 @@ class HTCondorObjectBase(object):
             out, err = process.communicate()
 
         log.info('Execute results - out: %s, err: %s', out, err)
-        return out, err
+        return out.decode("utf-8"), err.decode("utf-8")
 
     @set_cwd
     def _copy_input_files_to_remote(self):
