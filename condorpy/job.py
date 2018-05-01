@@ -341,6 +341,15 @@ class Job(HTCondorObjectBase):
         """
         self.attributes.pop(attr)
 
+    def out(self):
+        """Return the last line in the job's output file."""
+        output = '{0}/logs/{0}.{1}.0.out'.format(self.name, 
+                                             self.cluster_id)
+        with self._open(output, mode='r') as file:
+            # return the last line
+            last = file.readlines()[-1]
+        return last
+
     def _update_status(self, sub_job_num=None):
         """Gets the job status.
 
