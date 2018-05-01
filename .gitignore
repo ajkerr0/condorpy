@@ -4,4 +4,4 @@
 .pydevproject
 test/.coverage
 .activate
-
+condorpy.egg-info/
